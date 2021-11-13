@@ -1,0 +1,24 @@
+name: init-labels
+author: alejandrohdezma
+description: Initialize repository labels
+
+inputs:
+  github-token:
+    description: A valid GitHub token
+    required: true
+  target-repo:
+    description: Repository in which to initialize the labels
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: >
+        Initialize labels in ${{ inputs.target-repo }} with the ones
+        in `alejandrohdezma/actions/init-labels/labels.json`
+      shell: bash
+      run: ${{ github.action_path }}/init-labels.sh
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        TARGET_REPO: ${{ inputs.target-repo }}
+        LABELS_FILE: ${{ github.action_path }}/labels.json

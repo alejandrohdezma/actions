@@ -1,0 +1,21 @@
+if [[ "$REF" =~ (^feat.*) ]]; then
+    gh pr edit $PR --add-label ":rocket: feature"
+elif [[ "$REF" =~ (^doc.*/.*) ]]; then
+    gh pr edit $PR --add-label ":blue_book: documentation"
+elif [[ "$REF" =~ (^break.*/.*) ]]; then
+    gh pr edit $PR --add-label ":warning: breaking"
+elif [[ "$REF" =~ (^bug/.*)|(^fix/.*) ]]; then
+    gh pr edit $PR --add-label ":beetle: bug"
+elif [[ "$REF" =~ (^style/.*)|(^format/.*) ]]; then
+    gh pr edit $PR --add-label ":lipstick: style"
+elif [[ "$REF" =~ (^refactor/.*) ]]; then
+    gh pr edit $PR --add-label ":package: refactor"
+elif [[ "$REF" =~ (^remove/.*)|(^clean.*/.*) ]]; then
+    gh pr edit $PR --add-label ":broom: cleaning"
+elif [[ "$REF" =~ (^build/.*) ]]; then
+    gh pr edit $PR --add-label ":wrench: build"
+elif [[ "$REF" =~ (^test.*) ]]; then
+    gh pr edit $PR --add-label ":test_tube: test"
+elif [[ "$REF" =~ (^updates)|(^update.*/.*)|(^dep.*/.*) ]]; then
+    gh pr edit $PR --add-label ":chart_with_upwards_trend: dependency-update"
+fi

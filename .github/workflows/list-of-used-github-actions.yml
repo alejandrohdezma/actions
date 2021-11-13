@@ -1,0 +1,22 @@
+# This workflow contains the list of GitHub actions used accross the different
+# composite actions of this repository. Dependabot doesn't allow to update the
+# versions inside composite `action.yml` files, so we trigger the update on this
+# file and then propagate it to the composite actions using the
+# `alejandrohdezma/actions/update-github-actions` GitHub Action.
+
+name: List of used GitHub Actions inside composite
+
+on:
+  repository_dispatch:
+
+permissions: read-all
+
+jobs:
+  list-of-used-github-actions-so-dependabot-updates-them:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: coursier/cache-action@07539f0b67cbcbfc3a76a7a4d23db2396ec80ea1 # v6.3
+
+      - uses: laughedelic/coursier-setup@15d1356043766ba5aa048b087d1b2fae233fe61f # v1.1.1
+

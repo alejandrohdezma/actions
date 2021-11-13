@@ -1,0 +1,35 @@
+name: update-github-actions
+author: alejandrohdezma
+description: Improves the default update system for GitHub Actions by Dependabot
+
+inputs:
+  pr:
+    description: The PR to update (should contain the whole URL)
+    required: false
+    default: ${{ github.event.pull_request.html_url }}
+  github-token:
+    description: A valid GitHub token
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  action:
+    description: Action updated with dependabot
+    value: ${{ steps.update.outputs.action }}
+  old-version:
+    description: The old version of the action
+    value: ${{ steps.update.outputs.old-version }}
+  new-version:
+    description: The new version of the action
+    value: ${{ steps.update.outputs.new-version }}
+
+runs:
+  using: composite
+  steps:
+    - name: Update composite actions and comments
+      shell: bash
+      id: update
+      run: ${{ github.action_path }}/update-composite-and-comments.sh
+      env:
+        PR: ${{ inputs.pr }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}

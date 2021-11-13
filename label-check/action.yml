@@ -1,0 +1,13 @@
+name: label-check
+author: alejandrohdezma
+description: Check PR labels for a set of mandatory ones
+
+runs:
+  using: composite
+  steps:
+    - name: Check labels
+      shell: bash
+      run: ${{ github.action_path }}/label-check.sh
+      env:
+        PR: ${{ github.event.pull_request.html_url }}
+        GITHUB_TOKEN: ${{ github.token }}

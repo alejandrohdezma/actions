@@ -1,0 +1,38 @@
+name: Ensure composite actions and comments get updated
+
+on:
+  pull_request_target:
+
+permissions:
+  pull-requests: write
+
+jobs:
+  update-github-actions:
+    name: Launch `update-github-actions` action on this PR
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get `alejandrohdezma-steward` token
+        uses: alejandrohdezma/actions/github-app-token@v1
+        id: github_app
+        with:
+          token: ${{ secrets.GH_APP_TOKEN }}
+
+      - name: Checkout project
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # v2.4.0
+        with:
+          token: ${{ steps.github_app.outputs.token }}
+          ref: ${{ github.head_ref }}
+
+      - name: Launch `update-github-actions` action
+        id: update-github-actions
+        uses: alejandrohdezma/actions/update-github-actions@v1
+
+      - name: Commit new changes
+        uses: alejandrohdezma/actions/commit-and-push@v1
+        with:
+          message: >
+            Update ${{ steps.update-github-actions.outputs.action }}
+            from ${{ steps.update-github-actions.outputs.old-version }}
+            to ${{ steps.update-github-actions.outputs.new-version }}
+            in comments and composite actions

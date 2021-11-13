@@ -1,0 +1,35 @@
+name: scala
+author: alejandrohdezma
+description: Executes a SBT task on the provided JVM
+
+inputs:
+  github-token:
+    description: A valid GitHub Token. Will be handed to the SBT task as GITHUB_TOKEN env variable
+    required: false
+    default: ${{ github.token }}
+  jvm:
+    description: The JVM to install
+    required: false
+    default: adopt:1.11
+  task:
+    description: The SBT task to run
+    required: false
+    default: test
+
+runs:
+  using: composite
+  steps:
+    - name: Enable Coursier cache
+      uses: coursier/cache-action@07539f0b67cbcbfc3a76a7a4d23db2396ec80ea1 # v6.3
+
+    - name: Setup Coursier
+      uses: laughedelic/coursier-setup@15d1356043766ba5aa048b087d1b2fae233fe61f # v1.1.1
+      with:
+        jvm: ${{ inputs.jvm }}
+        apps: sbt
+
+    - name: Run SBT task
+      shell: bash
+      run: sbt ${{ inputs.task }}
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}

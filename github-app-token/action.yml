@@ -1,0 +1,28 @@
+name: github-app-token
+author: alejandrohdezma
+description: >
+  Retrieves the installation_token for a GitHub App. Given a credentials token
+  containing the GitHub App ID, the installation ID and the private key as JSON
+  in base64. You can use https://dtinth.github.io/obtain-github-app-installation-access-token/
+  to create such token.
+
+inputs:
+  token:
+    description: The GitHub App credentials key
+    required: true
+
+outputs:
+  token:
+    description: The GitHub App token
+    value: ${{ steps.github_app.outputs.token }}
+
+runs:
+  using: composite
+  steps:
+    - name: Get the GitHub App installation token
+      shell: bash
+      id: github_app
+      run: |
+        TOKEN="$(npx obtain-github-app-installation-access-token@1.1.0 ci ${{ inputs.token }})"
+        echo "::add-mask::$TOKEN"
+        echo "::set-output name=token::$TOKEN"

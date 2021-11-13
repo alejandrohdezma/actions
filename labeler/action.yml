@@ -1,0 +1,22 @@
+name: labeler
+author: alejandrohdezma
+description: Auto-label PRs based on branch/size
+
+runs:
+  using: composite
+  steps:
+    - name: Label PR based on branch
+      shell: bash
+      run: ${{ github.action_path }}/label-pr-based-on-branch.sh
+      env:
+        PR: ${{ github.event.pull_request.html_url }}
+        REF: ${{ github.event.pull_request.head.ref }}
+        GITHUB_TOKEN: ${{ github.token }}
+
+    - name: Label PR based on size
+      shell: bash
+      run: ${{ github.action_path }}/label-pr-based-on-size.sh
+      env:
+        PR: ${{ github.event.pull_request.html_url }}
+        CHANGES: ${{ github.event.pull_request.additions }} + ${{ github.event.pull_request.deletions }}
+        GITHUB_TOKEN: ${{ github.token }}

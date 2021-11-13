@@ -1,0 +1,18 @@
+name: check-semver-tag
+author: alejandrohdezma
+description: Checks that a tag contains a valid semver version prefixed with `v` (e.g. `1.1.5`)
+
+inputs:
+  tag:
+    description: The tag under testing
+    required: false
+    default: ${{ github.ref }}
+
+runs:
+  using: composite
+  steps:
+    - name: Check tag
+      shell: bash
+      run: ${{ github.action_path }}/check-semver-tag.sh
+      env:
+        TAG: ${{ inputs.tag }}

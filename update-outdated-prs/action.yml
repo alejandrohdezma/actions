@@ -1,0 +1,23 @@
+name: update-outdated-prs
+author: alejandrohdezma
+description: Updates out-of-date PRs merging to certain branch
+
+inputs:
+  branch:
+    description: Name of the branch that PRs-to-be-updated have as `base`
+    required: false
+    default: ${{ github.event.repository.default_branch }}
+  github-token:
+    description: A valid GitHub token
+    required: false
+    default: ${{ github.token }}
+
+runs:
+  using: composite
+  steps:
+    - name: Automatically update PR with ${{ inputs.branch }} as base
+      shell: bash
+      run: ${{ github.action_path }}/update-outdated-prs.sh
+      env:
+        BRANCH: ${{ inputs.branch }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}

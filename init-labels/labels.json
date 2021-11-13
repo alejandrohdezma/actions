@@ -1,0 +1,87 @@
+[
+    {
+        "color": "FFFFFF",
+        "description": "Size of PR between 500 and 1000 lines",
+        "name": ":balance_scale: L"
+    },
+    {
+        "color": "FFFFFF",
+        "description": "Size of PR between 100 and 500 lines",
+        "name": ":balance_scale: M"
+    },
+    {
+        "color": "FFFFFF",
+        "description": "Size of PR between 50 and 100 lines",
+        "name": ":balance_scale: S"
+    },
+    {
+        "color": "FFFFFF",
+        "description": "Size of PR between 1000 and 2000 lines",
+        "name": ":balance_scale: XL"
+    },
+    {
+        "color": "FFFFFF",
+        "description": "Size of PR between 10 and 50 lines",
+        "name": ":balance_scale: XS"
+    },
+    {
+        "color": "FFFFFF",
+        "description": "Size of PR is more than 2000 lines",
+        "name": ":balance_scale: XXL"
+    },
+    {
+        "color": "FFFFFF",
+        "description": "Size of PR is less than 10 lines",
+        "name": ":balance_scale: XXS"
+    },
+    {
+        "color": "B60205",
+        "description": "Bug fixes",
+        "name": ":beetle: bug"
+    },
+    {
+        "color": "1d76db",
+        "description": "Documentation changes",
+        "name": ":blue_book: documentation"
+    },
+    {
+        "color": "BB975B",
+        "description": "Removing code",
+        "name": ":broom: cleaning"
+    },
+    {
+        "color": "D3F026",
+        "description": "Dependency update (possibly bot-automated)",
+        "name": ":chart_with_upwards_trend: dependency-update"
+    },
+    {
+        "color": "F78BFD",
+        "description": "Style or formatting changes",
+        "name": ":lipstick: style"
+    },
+    {
+        "color": "382A86",
+        "description": "Refactor or renaming changes",
+        "name": ":package: refactor"
+    },
+    {
+        "color": "642434",
+        "description": "New feature or improvement",
+        "name": ":rocket: feature"
+    },
+    {
+        "color": "86F89E",
+        "description": "Test changes (fixing or adding new ones)",
+        "name": ":test_tube: tests"
+    },
+    {
+        "color": "F3DE0B",
+        "description": "Breaking changes to the API",
+        "name": ":warning: breaking"
+    },
+    {
+        "color": "4CBAEA",
+        "description": "Changes to the build",
+        "name": ":wrench: build"
+    }
+]
