@@ -23,11 +23,11 @@ if [[ $title =~ $regex ]]; then
 
     for f in $(find . -name '*.yml'); do
         # Ensure composite actions get updated
-        sed -i '' -e "s/uses: $owner\/$action@$oldSha/uses: $owner\/$action@$newSha/g" $f
+        sed -i -e "s/uses: $owner\/$action@$oldSha/uses: $owner\/$action@$newSha/g" $f
 
         # Ensure comments get updated
-        sed -i '' -e "s/uses: $owner\/$action@$newSha # $oldVersion/uses: $owner\/$action@$newSha # $newVersion/g" $f
-        sed -i '' -e "s/uses: $owner\/$action@$newSha # v$oldVersion/uses: $owner\/$action@$newSha # v$newVersion/g" $f
+        sed -i -e "s/uses: $owner\/$action@$newSha # $oldVersion/uses: $owner\/$action@$newSha # $newVersion/g" $f
+        sed -i -e "s/uses: $owner\/$action@$newSha # v$oldVersion/uses: $owner\/$action@$newSha # v$newVersion/g" $f
     done
 
     echo "::set-output name=action::$owner/$action"
