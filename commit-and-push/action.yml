@@ -10,7 +10,7 @@ inputs:
       Git branch name, where changes should be pushed too.
       Required if Action is not used on the `pull_request` event
     required: false
-    default: ${{ github.head_ref }}
+    default: ${{ github.event.pull_request.head.ref }}
   message:
     description: Message for the new commit
     required: true
