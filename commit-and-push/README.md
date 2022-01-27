@@ -6,7 +6,7 @@ Creates a new commit with current changes and push them to the selected branch u
 
 | Input | Description | Required | Default |
 | :--: | :--: | :--: | :--: |
-| `branch` | Branch where changes should be pushed too | `false` | `github.head_ref` |
+| `branch` | Branch where changes should be pushed too | `false` | `github.pull_request.head.ref` |
 | `message` | Message for the new commit | `true` | |
 
 ## Usage
