@@ -16,7 +16,7 @@ jobs:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - uses: coursier/cache-action@0cdf229a86211e64f9a576ee6c00cdf662f2554d # v6.3
+      - uses: coursier/cache-action@0cdf229a86211e64f9a576ee6c00cdf662f2554d # v6.3.1
 
       - uses: laughedelic/coursier-setup@7c7046155768b6734098d98f10a94cf2616e2669 # v1.1.2
 
