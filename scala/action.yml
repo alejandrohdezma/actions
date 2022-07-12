@@ -10,7 +10,7 @@ inputs:
   jvm:
     description: The JVM to install
     required: false
-    default: adopt:1.11
+    default: liberica:11
   task:
     description: The SBT task to run
     required: false
