@@ -20,7 +20,7 @@ runs:
   using: composite
   steps:
     - name: Enable Coursier cache
-      uses: coursier/cache-action@0cdf229a86211e64f9a576ee6c00cdf662f2554d # v6.3.1
+      uses: coursier/cache-action@38fe9893c588c871ecc973df9609c7378a27a759 # v6.3.2
 
     - name: Setup Coursier
       uses: laughedelic/coursier-setup@f6d7bf57ed5e0e3715c6261041f2169826c34c1a # v1.2
