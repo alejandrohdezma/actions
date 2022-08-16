@@ -22,8 +22,6 @@ the `v1` branch instead of `alejandrohdezma/actions/some-action@v1`.
 
 ### 🏷 [`labeler` _(auto-label PRs based on branch/size)_](./labeler/README.md)
 
-### <img src=".github/icons/scala.png" height=20>  [`scala` _(SBT-task-based CI for Scala projects)_](./scala/README.md)
-
 ### <img src=".github/icons/update-github-actions.png" height=20> [`update-github-actions` _(updates versions in composite actions and comments)_](./update-github-actions/README.md)
 
 ### <img src=".github/icons/update-outdated-prs.png" height=20> [`update-outdated-prs` _(updates out-of-date PRs merging to certain branch)_](./update-outdated-prs/README.md)
