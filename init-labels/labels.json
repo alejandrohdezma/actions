@@ -1,37 +1,37 @@
 [
     {
         "color": "FFFFFF",
-        "description": "Size of PR between 500 and 1000 lines",
-        "name": ":balance_scale: L"
-    },
-    {
-        "color": "FFFFFF",
-        "description": "Size of PR between 100 and 500 lines",
-        "name": ":balance_scale: M"
-    },
-    {
-        "color": "FFFFFF",
-        "description": "Size of PR between 50 and 100 lines",
-        "name": ":balance_scale: S"
-    },
-    {
-        "color": "FFFFFF",
-        "description": "Size of PR between 1000 and 2000 lines",
-        "name": ":balance_scale: XL"
-    },
-    {
-        "color": "FFFFFF",
-        "description": "Size of PR between 10 and 50 lines",
-        "name": ":balance_scale: XS"
-    },
-    {
-        "color": "FFFFFF",
-        "description": "Size of PR is more than 2000 lines",
+        "description": "Size of PR is more than @XXL@ lines",
         "name": ":balance_scale: XXL"
     },
     {
         "color": "FFFFFF",
-        "description": "Size of PR is less than 10 lines",
+        "description": "Size of PR between @XL@ and @XXL@ lines",
+        "name": ":balance_scale: XL"
+    },
+    {
+        "color": "FFFFFF",
+        "description": "Size of PR between @L@ and @XL@ lines",
+        "name": ":balance_scale: L"
+    },
+    {
+        "color": "FFFFFF",
+        "description": "Size of PR between @M@ and @L@ lines",
+        "name": ":balance_scale: M"
+    },
+    {
+        "color": "FFFFFF",
+        "description": "Size of PR between @S@ and @M@ lines",
+        "name": ":balance_scale: S"
+    },
+    {
+        "color": "FFFFFF",
+        "description": "Size of PR between @XS@ and @S@ lines",
+        "name": ":balance_scale: XS"
+    },
+    {
+        "color": "FFFFFF",
+        "description": "Size of PR is less than @XS@ lines",
         "name": ":balance_scale: XXS"
     },
     {

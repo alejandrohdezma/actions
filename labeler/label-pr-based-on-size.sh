@@ -3,17 +3,25 @@ gh alias set add-size-label --shell 'gh pr edit $1 --add-label "$2" &&
   jq --arg LABEL "$2" -r '"'"'map(select(. != $LABEL)) | .[]'"'"' |
   parallel gh pr edit $1 --remove-label "{}"'
 
-if (($CHANGES > 2000)); then
+SIZES_ARRAY=(${SIZES//,/ })
+XXL=${SIZES_ARRAY[0]}
+XL=${SIZES_ARRAY[1]}
+L=${SIZES_ARRAY[2]}
+M=${SIZES_ARRAY[3]}
+S=${SIZES_ARRAY[4]}
+XS=${SIZES_ARRAY[5]}
+
+if (($CHANGES > $XXL)); then
   gh add-size-label $PR ":balance_scale: XXL"
-elif (($CHANGES > 1000)); then
+elif (($CHANGES > $XL)); then
   gh add-size-label $PR ":balance_scale: XL"
-elif (($CHANGES > 500)); then
+elif (($CHANGES > $L)); then
   gh add-size-label $PR ":balance_scale: L"
-elif (($CHANGES > 100)); then
+elif (($CHANGES > $M)); then
   gh add-size-label $PR ":balance_scale: M"
-elif (($CHANGES > 50)); then
+elif (($CHANGES > $S)); then
   gh add-size-label $PR ":balance_scale: S"
-elif (($CHANGES > 10)); then
+elif (($CHANGES > $XS)); then
   gh add-size-label $PR ":balance_scale: XS"
 else
   gh add-size-label $PR ":balance_scale: XXS"

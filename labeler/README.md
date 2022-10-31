@@ -16,15 +16,27 @@ This action can be used to automatically label PRs based on their branch/size.
 | :wrench: **build** | `^build/.*` | - |
 | :test_tube: **test** | `^test.*` | - |
 | :chart_with_upwards_trend: **dependency-update** | `^updates` or `^update.*/.*` or `^dep.*/.*` | - |
-| :balance_scale: **XXL** | - | > 2000 |
-| :balance_scale: **XL** | - | > 1000 |
-| :balance_scale: **L** | - | > 500 |
-| :balance_scale: **M** | - | > 100 |
-| :balance_scale: **S** | - | > 50 |
-| :balance_scale: **XS** | - | > 10 |
-| :balance_scale: **XXS** | - | <= 10 |
+| :balance_scale: **XXL** | - | > ${{ inputs.sizes[0] }} |
+| :balance_scale: **XL** | - | > ${{ inputs.sizes[1] }} |
+| :balance_scale: **L** | - | > ${{ inputs.sizes[2] }} |
+| :balance_scale: **M** | - | > ${{ inputs.sizes[3] }} |
+| :balance_scale: **S** | - | > ${{ inputs.sizes[4] }} |
+| :balance_scale: **XS** | - | > ${{ inputs.sizes[5] }} |
+| :balance_scale: **XXS** | - | <= ${{ inputs.sizes[5] }} |
 
 ## Usage
+
+You can use the `sizes` input to control how size labels are applied. Just
+add a 5 element comma-separated list with the values from XXL to XS. Defaults to:
+
+```bash
+XXL=2000
+XL=1000
+L=500
+M=100
+S=50
+XS=10
+```
 
 ```yaml
 name: Label PR
@@ -39,6 +51,8 @@ jobs:
     steps:
       - name: Update PR labels
         uses: alejandrohdezma/actions/labeler@v1
+        with:
+          sizes: 2000,1000,500,100,50,10
 ```
 
 [![](https://img.shields.io/badge/Go%20back-gray?style=for-the-badge)](https://github.com/alejandrohdezma/actions)

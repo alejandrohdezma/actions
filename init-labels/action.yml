@@ -9,6 +9,10 @@ inputs:
   target-repo:
     description: Repository in which to initialize the labels
     required: true
+  sizes:
+    description: Number of changes for each size as an integer comma-separated array
+    default: 2000,1000,500,100,50,10
+    required: false
 
 runs:
   using: composite
@@ -22,3 +26,4 @@ runs:
         GITHUB_TOKEN: ${{ inputs.github-token }}
         TARGET_REPO: ${{ inputs.target-repo }}
         LABELS_FILE: ${{ github.action_path }}/labels.json
+        SIZES: ${{ inputs.sizes }}
