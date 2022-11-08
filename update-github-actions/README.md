@@ -1,4 +1,4 @@
-# ![](../.github/icons/update-github-actions.png) `update-github-actions`
+# <img height=30 src="../.github/icons/update-github-actions.svg"> `update-github-actions`
 
 Improves the default update system for GitHub Actions by Dependabot by allowing to update composite
 actions `action.yml` and comments of the form `# vX.X.X` when SHA versions are used.

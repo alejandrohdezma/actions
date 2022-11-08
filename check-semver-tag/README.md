@@ -1,4 +1,4 @@
-# ![](../.github/icons/check-semver-tag.png) `check-semver-tag`
+# <img height=30 src="../.github/icons/check-semver-tag.svg"> `check-semver-tag`
 
 Checks that a tag contains a valid semver version prefixed with `v` (e.g. `1.1.5`).
 

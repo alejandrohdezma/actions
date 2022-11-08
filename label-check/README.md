@@ -1,4 +1,4 @@
-# ![](../.github/icons/label-check.png) `label-check`
+# <img height=30 src="../.github/icons/label-check.svg"> `label-check`
 
 This action can be used to check that at least one of the mandatory labels is set in the PR.
 
