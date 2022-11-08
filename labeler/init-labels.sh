@@ -1,7 +1,7 @@
 gh alias set add-label --shell 'echo $2 | gh api --silent -X POST "/repos/$1/labels" --input -'
 
-# Get current labels in $TARGET_REPO
-current=$(gh api "/repos/$TARGET_REPO/labels" --paginate)
+# Get current labels in $REPOSITORY
+current=$(gh api "/repos/$REPOSITORY/labels" --paginate)
 current_names=$(echo $current | jq 'map(.name)')
 
 # Get number for each size label
@@ -23,12 +23,14 @@ label_names=$(echo $labels | jq 'map(.name)')
 
 filter_not_in_labels='map(select(.name as $name | $labels | index($name) | not))'
 
-# Delete labels present on the $TARGET_REPO not present on the labels.json file
-echo $current |
-    jq -r --argjson labels "$label_names" "$filter_not_in_labels  | .[].name" |
-    parallel gh api -X DELETE "/repos/$TARGET_REPO/labels/{}"
+# Delete labels present on the $REPOSITORY not present on the labels.json file
+if [[ $DELETE_LABELS == "true" ]]; then
+    echo $current |
+        jq -r --argjson labels "$label_names" "$filter_not_in_labels  | .[].name" |
+        parallel gh api -X DELETE "/repos/$REPOSITORY/labels/{}"
+fi
 
-# Add labels present on the labels.json file not present on the $TARGET_REPO
+# Add labels present on the labels.json file not present on the $REPOSITORY
 echo $labels |
     jq -c --argjson labels "$current_names" "$filter_not_in_labels | .[]" |
-    parallel gh add-label $TARGET_REPO '{}'
+    parallel gh add-label $REPOSITORY '{}'

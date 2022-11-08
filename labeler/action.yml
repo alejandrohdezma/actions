@@ -3,6 +3,14 @@ author: alejandrohdezma
 description: Auto-label PRs based on branch/size
 
 inputs:
+  github-token:
+    description: A valid GitHub token
+    default: ${{ github.token }}
+    required: false
+  delete-unrecognised-labels:
+    description: Wheter this action should delete labels not present on `labels.json`
+    default: "true"
+    required: false
   sizes:
     description: Number of changes for each size as an integer comma-separated array
     default: 2000,1000,500,100,50,10
@@ -11,13 +19,24 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: >
+        Initialize labels in ${{ inputs.target-repo }} with the ones
+        in `alejandrohdezma/actions/labeler/labels.json`
+      shell: bash
+      run: ${{ github.action_path }}/init-labels.sh
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        DELETE_LABELS: ${{ inputs.delete-unrecognised-labels }}
+        REPOSITORY: ${{ github.event.repository.full_name }}
+        LABELS_FILE: ${{ github.action_path }}/labels.json
+        SIZES: ${{ inputs.sizes }}
     - name: Label PR based on branch
       shell: bash
       run: ${{ github.action_path }}/label-pr-based-on-branch.sh
       env:
         PR: ${{ github.event.pull_request.html_url }}
         REF: ${{ github.event.pull_request.head.ref }}
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
 
     - name: Label PR based on size
       shell: bash
@@ -26,4 +45,4 @@ runs:
         PR: ${{ github.event.pull_request.html_url }}
         CHANGES: ${{ github.event.pull_request.additions }} + ${{ github.event.pull_request.deletions }}
         SIZES: ${{ inputs.sizes }}
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}

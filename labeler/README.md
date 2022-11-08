@@ -1,6 +1,7 @@
 # 🏷 `labeler`
 
 This action can be used to automatically label PRs based on their branch/size.
+It will also initialize the repository with missing labels from [labels.json][1].
 
 ## Labels:
 
@@ -23,6 +24,14 @@ This action can be used to automatically label PRs based on their branch/size.
 | :balance_scale: **S** | - | > ${{ inputs.sizes[4] }} |
 | :balance_scale: **XS** | - | > ${{ inputs.sizes[5] }} |
 | :balance_scale: **XXS** | - | <= ${{ inputs.sizes[5] }} |
+
+## Inputs
+
+| Input | Description | Required | Default |
+| :--: | :--: | :--: | :--: |
+| `token` | The GitHub Token used to create/add labels | `false` | `github.token` |
+| `delete-unrecognised-labels` | Wheter this action should delete labels not present on [`labels.json`][1] | `false` | `true` |
+| `sizes` | Number of changes for each size as an integer comma-separated array | `false` | 2000,1000,500,100,50,10 |
 
 ## Usage
 
@@ -56,3 +65,5 @@ jobs:
 ```
 
 <a href="../README.md#available-actions"><img height=15 src="../.github/icons/go-back.svg"> <b>Go back</b></a>
+
+[1]: https://github.com/alejandrohdezma/actions/blob/v1/labeler/labels.json
