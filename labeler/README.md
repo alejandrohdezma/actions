@@ -1,4 +1,4 @@
-# <img height=30 src="../.github/icons/labeler.svg"> `labeler`
+# <picture><source media="(prefers-color-scheme: dark)" srcset="../.github/icons/labeler.svg"><img width=30 src="../.github/icons/labeler-light.svg"></picture> `labeler`
 
 This action can be used to automatically label PRs based on their branch/size.
 It will also initialize the repository with missing labels from [labels.json][1].

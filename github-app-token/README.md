@@ -1,4 +1,4 @@
-# <img height=30 src="../.github/icons/github-app-token.svg"> `github-app-token`
+# <picture><source media="(prefers-color-scheme: dark)" srcset="../.github/icons/github-app-token.svg"><img width=30 src="../.github/icons/github-app-token-light.svg"></picture> `github-app-token`
 
 This action Retrieves the `installation_token` for a GitHub App. Given a credentials token containing
 the GitHub App ID, the installation ID and the private key as JSON in base64. You can get such token

@@ -12,10 +12,10 @@ the `v1` branch instead of `alejandrohdezma/actions/some-action@v1`.
 
 | | |
 | :--: | :-- |
-| <img src=".github/icons/check-semver-tag.svg" width=50> | **[`check-semver-tag` _(checks tag contains valid semver version)_](./check-semver-tag/README.md)** |
-| <img src=".github/icons/commit-and-push.svg" width=50> | **[`commit-and-push` _(creates and pushes new commit with current changes)_](./commit-and-push/README.md)** |
-| <img src=".github/icons/github-app-token.svg" width=50> | **[`github-app-token` _(retrieve GitHub App installation token)_](./github-app-token/README.md)** |
-| <img src=".github/icons/label-check.svg" width=50> | **[`label-check` _(check PR labels for a set of mandatory ones)_](./label-check/README.md)** |
-| <img src=".github/icons/labeler.svg" width=50> | **[`labeler` _(auto-label PRs based on branch/size)_](./labeler/README.md)** |
-| <img src=".github/icons/update-github-actions.svg" width=50> | **[`update-github-actions` _(updates versions in composite actions and comments)_](./update-github-actions/README.md)** |
-| <img src=".github/icons/update-outdated-prs.svg" width=50> | **[`update-outdated-prs` _(updates out-of-date PRs merging to certain branch)_](./update-outdated-prs/README.md)** |
+| <picture><source media="(prefers-color-scheme: dark)" srcset=".github/icons/check-semver-tag.svg"><img width=50 src=".github/icons/check-semver-tag-light.svg"></picture> | **[`check-semver-tag` _(checks tag contains valid semver version)_](./check-semver-tag/README.md)** |
+| <picture><source media="(prefers-color-scheme: dark)" srcset=".github/icons/commit-and-push.svg"><img width=50 src=".github/icons/commit-and-push-light.svg"></picture> | **[`commit-and-push` _(creates and pushes new commit with current changes)_](./commit-and-push/README.md)** |
+| <picture><source media="(prefers-color-scheme: dark)" srcset=".github/icons/github-app-token.svg"><img width=50 src=".github/icons/github-app-token-light.svg"></picture> | **[`github-app-token` _(retrieve GitHub App installation token)_](./github-app-token/README.md)** |
+| <picture><source media="(prefers-color-scheme: dark)" srcset=".github/icons/label-check.svg"><img width=50 src=".github/icons/label-check-light.svg"></picture> | **[`label-check` _(check PR labels for a set of mandatory ones)_](./label-check/README.md)** |
+| <picture><source media="(prefers-color-scheme: dark)" srcset=".github/icons/labeler.svg"><img width=50 src=".github/icons/labeler-light.svg"></picture> | **[`labeler` _(auto-label PRs based on branch/size)_](./labeler/README.md)** |
+| <picture><source media="(prefers-color-scheme: dark)" srcset=".github/icons/update-github-actions.svg"><img width=50 src=".github/icons/update-github-actions-light.svg"></picture> | **[`update-github-actions` _(updates versions in composite actions and comments)_](./update-github-actions/README.md)** |
+| <picture><source media="(prefers-color-scheme: dark)" srcset=".github/icons/update-outdated-prs.svg"><img width=50 src=".github/icons/update-outdated-prs-light.svg"></picture> | **[`update-outdated-prs` _(updates out-of-date PRs merging to certain branch)_](./update-outdated-prs/README.md)** |

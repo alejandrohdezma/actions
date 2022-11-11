@@ -1,4 +1,4 @@
-# <img height=30 src="../.github/icons/label-check.svg"> `label-check`
+# <picture><source media="(prefers-color-scheme: dark)" srcset="../.github/icons/label-check.svg"><img width=30 src="../.github/icons/label-check-light.svg"></picture> `label-check`
 
 This action can be used to check that at least one of the mandatory labels is set in the PR.
 

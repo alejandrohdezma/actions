@@ -1,4 +1,4 @@
-# <img height=30 src="../.github/icons/update-github-actions.svg"> `update-github-actions`
+# <picture><source media="(prefers-color-scheme: dark)" srcset="../.github/icons/update-github-actions.svg"><img width=30 src="../.github/icons/update-github-actions-light.svg"></picture> `update-github-actions`
 
 Improves the default update system for GitHub Actions by Dependabot by allowing to update composite
 actions `action.yml` and comments of the form `# vX.X.X` when SHA versions are used.

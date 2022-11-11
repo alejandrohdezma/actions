@@ -1,4 +1,4 @@
-# <img height=30 src="../.github/icons/commit-and-push.svg"> `commit-and-push`
+# <picture><source media="(prefers-color-scheme: dark)" srcset="../.github/icons/commit-and-push.svg"><img width=30 src="../.github/icons/commit-and-push-light.svg"></picture> `commit-and-push`
 
 Creates a new commit with current changes and push them to the selected branch using the GitHub Actions user.
 

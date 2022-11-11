@@ -1,4 +1,4 @@
-# <img height=30 src="../.github/icons/update-outdated-prs.svg"> `update-outdated-prs`
+# <picture><source media="(prefers-color-scheme: dark)" srcset="../.github/icons/update-outdated-prs.svg"><img width=30 src="../.github/icons/update-outdated-prs-light.svg"></picture> `update-outdated-prs`
 
 This action will update the PRs merging to the current branch that are out-of-date.
 

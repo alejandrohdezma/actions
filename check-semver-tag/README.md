@@ -1,4 +1,4 @@
-# <img height=30 src="../.github/icons/check-semver-tag.svg"> `check-semver-tag`
+# <picture><source media="(prefers-color-scheme: dark)" srcset="../.github/icons/check-semver-tag.svg"><img width=30 src="../.github/icons/check-semver-tag-light.svg"></picture> `check-semver-tag`
 
 Checks that a tag contains a valid semver version prefixed with `v` (e.g. `1.1.5`).
 
