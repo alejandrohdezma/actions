@@ -7,7 +7,13 @@ if [ -n "$(git status -s)" ]; then
     git checkout -B $GIT_BRANCH || (echo "::error::Unable to switch to branch $GIT_BRANCH" && exit 1)
     git add .
     git commit --message=''"$GIT_MESSAGE"'' --author="$GIT_NAME <$GIT_EMAIL>"
-    git push --set-upstream origin "HEAD:$GIT_BRANCH" --atomic || (echo "::error::Unable to push to branch" && exit 1)
+    
+    if [[ $GIT_FORCE == 'true' ]]; then
+        git push -f --set-upstream origin "HEAD:$GIT_BRANCH" --atomic || (echo "::error::Unable to push to branch" && exit 1)
+    else
+        git push --set-upstream origin "HEAD:$GIT_BRANCH" --atomic || (echo "::error::Unable to push to branch" && exit 1)
+    fi
+
     echo "🚀 Changes have been pushed to branch $GIT_BRANCH"
 else
     echo "🧺 Working tree clean. Nothing to commit."
