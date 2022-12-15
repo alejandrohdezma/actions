@@ -11,6 +11,10 @@ inputs:
       Required if Action is not used on the `pull_request` event
     required: false
     default: ${{ github.event.pull_request.head.ref }}
+  force-push:
+    description: Set to `true` for using the `-f` option when pushing the branch
+    required: false
+    default: 'false'
   message:
     description: Message for the new commit
     required: true
@@ -26,3 +30,4 @@ runs:
         GIT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
         GIT_MESSAGE: ${{ inputs.message }}
         GIT_BRANCH: ${{ inputs.branch }}
+        GIT_FORCE: ${{ inputs.force-push }}
