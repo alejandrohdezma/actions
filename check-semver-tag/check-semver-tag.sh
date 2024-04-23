@@ -1,4 +1,4 @@
-if [[ $TAG =~ ^(refs/tags/)?v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+if [[ $TAG =~ ^(refs/tags/)?v[0-9]+\.[0-9]+\.[0-9]+(-M\d+)?$ ]]; then
     echo "🏷 $TAG follows semver"
 else
     echo "::error ::Tag $TAG does not follow semver"
