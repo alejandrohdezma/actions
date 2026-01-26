@@ -4,6 +4,11 @@ description: >
   Creates a new commit with current changes and push them
   to the selected branch using the GitHub Actions user
 
+outputs:
+  pushed:
+    description: Whether changes were pushed to the remote repository
+    value: ${{ steps.commit-and-push.outputs.pushed }}
+
 inputs:
   branch:
     description: >
@@ -27,6 +32,7 @@ runs:
   using: composite
   steps:
     - name: Create commit with current changes and push it to ${{ inputs.branch }}
+      id: commit-and-push
       shell: bash
       run: ${{ github.action_path }}/commit-and-push.sh
       env:

@@ -21,6 +21,8 @@ if [ -n "$(git status -s)" ]; then
     fi
 
     echo "🚀 Changes have been pushed to branch $GIT_BRANCH"
+    echo "pushed=true" >> "$GITHUB_OUTPUT"
 else
     echo "🧺 Working tree clean. Nothing to commit."
+    echo "pushed=false" >> "$GITHUB_OUTPUT"
 fi
