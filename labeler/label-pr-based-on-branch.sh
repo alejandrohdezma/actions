@@ -15,7 +15,7 @@ elif [[ "$REF" =~ (^remove/.*)|(^clean.*/.*) ]]; then
 elif [[ "$REF" =~ (^build/.*) ]]; then
     gh pr edit $PR --add-label ":wrench: build"
 elif [[ "$REF" =~ (^test.*) ]]; then
-    gh pr edit $PR --add-label ":test_tube: test"
+    gh pr edit $PR --add-label ":test_tube: tests"
 elif [[ "$REF" =~ (^updates)|(^update.*/.*)|(^dep.*/.*) ]]; then
     gh pr edit $PR --add-label ":chart_with_upwards_trend: dependency-update"
 fi
