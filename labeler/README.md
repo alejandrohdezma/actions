@@ -15,7 +15,7 @@ It will also initialize the repository with missing labels from [labels.json][1]
 | :package: **refactor** | `^refactor/.*` | - |
 | :broom: **cleaning** | `^remove/.*` or `^clean.*/.*` | - |
 | :wrench: **build** | `^build/.*` | - |
-| :test_tube: **test** | `^test.*` | - |
+| :test_tube: **tests** | `^test.*` | - |
 | :chart_with_upwards_trend: **dependency-update** | `^updates` or `^update.*/.*` or `^dep.*/.*` | - |
 | :balance_scale: **XXL** | - | > ${{ inputs.sizes[0] }} |
 | :balance_scale: **XL** | - | > ${{ inputs.sizes[1] }} |
