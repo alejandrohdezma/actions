@@ -1,0 +1,71 @@
+name: upsert-pr
+author: alejandrohdezma
+description: >
+  Commits current changes, force-pushes to a branch, and creates
+  or updates a pull request from that branch using the GitHub
+  Actions user
+
+inputs:
+  branch:
+    description: Branch to commit and force-push to
+    required: true
+  base:
+    description: Base branch for the pull request
+    required: false
+    default: main
+  message:
+    description: Commit message for the changes
+    required: true
+  title:
+    description: Title for the pull request
+    required: true
+  body:
+    description: Body for the pull request
+    required: false
+    default: ""
+  github-token:
+    description: GitHub token for PR operations
+    required: false
+    default: ${{ github.token }}
+  force-push:
+    description: Set to `true` for using the `-f` option when pushing the branch
+    required: false
+    default: "true"
+  force-add:
+    description: Set to `true` for using the `-f` option when adding changes
+    required: false
+    default: "false"
+
+outputs:
+  pr-number:
+    description: The pull request number
+    value: ${{ steps.upsert-pr.outputs.pr-number }}
+  pr-url:
+    description: The pull request URL
+    value: ${{ steps.upsert-pr.outputs.pr-url }}
+  pushed:
+    description: Whether changes were pushed to the remote repository
+    value: ${{ steps.commit-and-push.outputs.pushed }}
+
+runs:
+  using: composite
+  steps:
+    - name: Commit and push changes to ${{ inputs.branch }}
+      id: commit-and-push
+      uses: alejandrohdezma/actions/commit-and-push@v1
+      with:
+        message: ${{ inputs.message }}
+        branch: ${{ inputs.branch }}
+        force-push: ${{ inputs.force-push }}
+        force-add: ${{ inputs.force-add }}
+
+    - name: Create or update PR for branch ${{ inputs.branch }}
+      id: upsert-pr
+      shell: bash
+      run: ${{ github.action_path }}/upsert-pr.sh
+      env:
+        GIT_BRANCH: ${{ inputs.branch }}
+        PR_BASE: ${{ inputs.base }}
+        PR_TITLE: ${{ inputs.title }}
+        PR_BODY: ${{ inputs.body }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
