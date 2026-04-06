@@ -12,9 +12,13 @@ if [ -n "$(git status -s)" ]; then
         git add .
     fi
     
-    git commit --message=''"$GIT_MESSAGE"'' --author="$GIT_NAME <$GIT_EMAIL>"
+    if [[ $GIT_AMEND == 'true' ]]; then
+        git commit --amend --no-edit
+    else
+        git commit --message=''"$GIT_MESSAGE"'' --author="$GIT_NAME <$GIT_EMAIL>"
+    fi
     
-    if [[ $GIT_FORCE_PUSH == 'true' ]]; then
+    if [[ $GIT_FORCE_PUSH == 'true' || $GIT_AMEND == 'true' ]]; then
         git push -f --set-upstream origin "HEAD:$GIT_BRANCH" --atomic || { echo "::error::Unable to push to branch" && exit 1; }
     else
         git push --set-upstream origin "HEAD:$GIT_BRANCH" --atomic || { echo "::error::Unable to push to branch" && exit 1; }

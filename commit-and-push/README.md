@@ -7,7 +7,10 @@ Creates a new commit with current changes and push them to the selected branch u
 | Input | Description | Required | Default |
 | :--: | :--: | :--: | :--: |
 | `branch` | Branch where changes should be pushed too | `false` | `github.pull_request.head.ref` |
-| `message` | Message for the new commit | `true` | |
+| `message` | Message for the new commit (required unless `amend` set to `true`) | `false` | |
+| `amend` | Set to `true` to amend the previous commit instead of creating a new one (implies force-push) | `false` | `false` |
+| `force-push` | Set to `true` for using the `-f` option when pushing the branch | `false` | `false` |
+| `force-add` | Set to `true` for using the `-f` option when adding changes | `false` | `false` |
 
 ## Usage
 
@@ -33,7 +36,7 @@ jobs:
         run: echo "Do something here..."
 
       - name: Commit changes with new documentation
-        uses: alejandrohdezma/actions commit-and-push@v1
+        uses: alejandrohdezma/actions/commit-and-push@v1
         with:
           message: Bump documentation [skip ci]
           branch: main

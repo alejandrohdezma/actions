@@ -25,8 +25,13 @@ inputs:
     required: false
     default: 'false'
   message:
-    description: Message for the new commit
-    required: true
+    description: Message for the new commit (required unless amend set to `true`)
+    required: false
+    default: ""
+  amend:
+    description: Set to `true` to amend the previous commit instead of creating a new one
+    required: false
+    default: "false"
 
 runs:
   using: composite
@@ -42,3 +47,4 @@ runs:
         GIT_BRANCH: ${{ inputs.branch }}
         GIT_FORCE_PUSH: ${{ inputs.force-push }}
         GIT_FORCE_ADD: ${{ inputs.force-add }}
+        GIT_AMEND: ${{ inputs.amend }}
