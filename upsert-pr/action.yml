@@ -14,8 +14,9 @@ inputs:
     required: false
     default: main
   message:
-    description: Commit message for the changes
-    required: true
+    description: Commit message for the changes (defaults to title if not provided)
+    required: false
+    default: ""
   title:
     description: Title for the pull request
     required: true
@@ -54,12 +55,13 @@ runs:
       id: commit-and-push
       uses: alejandrohdezma/actions/commit-and-push@v1
       with:
-        message: ${{ inputs.message }}
+        message: ${{ inputs.message || inputs.title }}
         branch: ${{ inputs.branch }}
         force-push: ${{ inputs.force-push }}
         force-add: ${{ inputs.force-add }}
 
     - name: Create or update PR for branch ${{ inputs.branch }}
+      if: steps.commit-and-push.outputs.pushed == 'true'
       id: upsert-pr
       shell: bash
       run: ${{ github.action_path }}/upsert-pr.sh
