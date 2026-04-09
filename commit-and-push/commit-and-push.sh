@@ -3,7 +3,6 @@ if [ -n "$(git status -s)" ]; then
     git config --global user.email "$GIT_EMAIL"
     echo "👤 Git identity set to $GIT_NAME <$GIT_EMAIL>"
 
-    git fetch --depth=1
     git checkout -B $GIT_BRANCH || { echo "::error::Unable to switch to branch $GIT_BRANCH" && exit 1; }
     
     if [[ $GIT_FORCE_ADD == 'true' ]]; then
