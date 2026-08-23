@@ -1,8 +1,11 @@
 name: commit-and-push
 author: alejandrohdezma
 description: >
-  Creates a new commit with current changes and push them
-  to the selected branch using the GitHub Actions user
+  Creates a new commit with current changes (when there are any) and pushes
+  HEAD to the selected branch using the GitHub Actions user. Pre-existing
+  unpushed commits are pushed even when the working tree is clean; the push
+  is skipped when the remote branch already points at HEAD, and a diverged
+  remote fails the action unless force-push is enabled.
 
 outputs:
   pushed:
